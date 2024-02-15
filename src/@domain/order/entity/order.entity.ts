@@ -26,6 +26,22 @@ export default class Order {
     this.validate();
   }
 
+  public get id(): string {
+    return this._id;
+  }
+
+  public get customerId(): string {
+    return this._customerId;
+  }
+
+  public get productId(): string {
+    return this._productId;
+  }
+
+  public get unitPrice(): number {
+    return this._unitPrice;
+  }
+
   public get total(): number {
     return this._total;
   }

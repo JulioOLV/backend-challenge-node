@@ -18,6 +18,9 @@ export default class AddressModel {
   city: string;
 
   @Column()
+  country: string;
+
+  @Column()
   state: string;
 
   @Column()

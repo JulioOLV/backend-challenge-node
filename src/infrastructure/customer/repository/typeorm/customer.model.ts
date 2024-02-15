@@ -1,8 +1,8 @@
-import { Column, Entity, OneToOne, PrimaryColumn } from 'typeorm';
+import { BaseEntity, Column, Entity, OneToOne, PrimaryColumn } from 'typeorm';
 import AddressModel from './address.model';
 
 @Entity()
-export default class CustomerModel {
+export default class CustomerModel extends BaseEntity {
   @PrimaryColumn()
   id: string;
 

@@ -1,4 +1,7 @@
+import { v4 as uuid } from 'uuid';
+
 export default class Address {
+  private _id: string;
   private _street: string;
   private _number: string;
   private _complement: string;
@@ -8,6 +11,7 @@ export default class Address {
   private _zipCode: string;
 
   constructor(
+    id: string,
     street: string,
     number: string,
     complement: string,
@@ -16,6 +20,7 @@ export default class Address {
     country: string,
     zipCode: string,
   ) {
+    this._id = id || uuid();
     this._street = street;
     this._number = number;
     this._complement = complement;
@@ -25,6 +30,10 @@ export default class Address {
     this._zipCode = zipCode;
 
     this.validate();
+  }
+
+  public get id(): string {
+    return this._id;
   }
 
   public get street(): string {

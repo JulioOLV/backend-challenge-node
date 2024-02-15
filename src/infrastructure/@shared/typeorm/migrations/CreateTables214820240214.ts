@@ -30,6 +30,7 @@ export class CreateTables214820240214 implements MigrationInterface {
           city VARCHAR(120) NOT NULL,
           state VARCHAR(2) NOT NULL,
           zip_code VARCHAR(8) NOT NULL,
+          country VARCHAR(120) NOT NULL,
           created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
           updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
           PRIMARY KEY (id),
