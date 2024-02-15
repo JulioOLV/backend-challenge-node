@@ -93,7 +93,7 @@ describe('Customer entity unit tests', () => {
       faker.date.birthdate({ min: 18, mode: 'age' }),
     );
 
-    customer.activeCustomer();
+    customer.activeCustomer(true);
 
     expect(customer).toBeDefined();
     expect(customer.active).toBe(true);
