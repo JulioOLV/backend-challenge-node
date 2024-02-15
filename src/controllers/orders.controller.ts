@@ -10,8 +10,8 @@ export class OrdersController {
   @Post()
   async create(@Body() createOrderDto: CreateOrderDto, @Res() res: Response) {
     try {
-      await this.ordersService.create(createOrderDto);
-      return res.status(201).json({ message: 'Order created successfully' });
+      const orderId = await this.ordersService.create(createOrderDto);
+      return res.status(201).json({ orderId });
     } catch (error) {
       console.log(error);
       return res.status(400).json({ message: error.message });

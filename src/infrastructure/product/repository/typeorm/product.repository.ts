@@ -25,11 +25,13 @@ export default class ProductRepository implements ProductRepositoryInterface {
     return product;
   }
 
-  async create(entity: Product): Promise<void> {
-    await this.product.save({
+  async create(entity: Product): Promise<string> {
+    const product = await this.product.save({
       id: entity.id,
       name: entity.name,
       active: entity.active,
     });
+
+    return product.id;
   }
 }

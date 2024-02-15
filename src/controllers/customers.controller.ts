@@ -13,8 +13,10 @@ export class CustomersController {
     @Res() res: Response,
   ) {
     try {
-      await this.customersService.create(createCustomerDto);
-      return res.status(201).json({ message: 'Customer created successfully' });
+      const customerId = await this.customersService.create(createCustomerDto);
+      return res.status(201).json({
+        customerId,
+      });
     } catch (error) {
       console.log(error);
       return res.status(400).json({ message: error.message });

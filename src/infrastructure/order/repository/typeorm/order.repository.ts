@@ -29,8 +29,8 @@ export default class OrderRepository implements OrderRepositoryInterface {
     );
   }
 
-  async create(entity: Order): Promise<void> {
-    await this.order.save({
+  async create(entity: Order): Promise<string> {
+    const order = await this.order.save({
       id: entity.id,
       customer_id: entity.customerId,
       product_id: entity.productId,
@@ -39,5 +39,7 @@ export default class OrderRepository implements OrderRepositoryInterface {
       total: entity.total,
       date: entity.date,
     });
+
+    return order.id;
   }
 }

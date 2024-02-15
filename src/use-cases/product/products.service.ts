@@ -9,19 +9,19 @@ import GetProductDto from '../../controllers/dto/get-product.dto';
 export class ProductsService {
   constructor(private productRepository: ProductRepository) {}
 
-  async create(createProductDto: CreateProductDto): Promise<void> {
+  async create(createProductDto: CreateProductDto): Promise<string> {
     try {
       const product = new Product(uuid(), createProductDto.name);
       product.activeProduct(true);
 
-      await this.productRepository.create(product);
+      return await this.productRepository.create(product);
     } catch (error) {
       console.log(error);
       throw new Error(error.message);
     }
   }
 
-  async findOne(id: string): Promise<GetProductDto> {
+  async findOne(id: string): Promise<GetProductDto | null> {
     try {
       const product = await this.productRepository.find(id);
 

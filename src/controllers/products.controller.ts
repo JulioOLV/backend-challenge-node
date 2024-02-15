@@ -13,8 +13,8 @@ export class ProductsController {
     @Res() res: Response,
   ) {
     try {
-      await this.productsService.create(createProductDto);
-      return res.status(201).json({ message: 'Product created successfully' });
+      const productId = await this.productsService.create(createProductDto);
+      return res.status(201).json({ productId });
     } catch (error) {
       console.log(error);
       return res.status(400).json({ message: error.message });

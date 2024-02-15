@@ -15,7 +15,7 @@ export class OrdersService {
     private productRepository: ProductRepository,
   ) {}
 
-  async create(createOrderDto: CreateOrderDto): Promise<void> {
+  async create(createOrderDto: CreateOrderDto): Promise<string> {
     try {
       const customer = await this.customerRepository.find(
         createOrderDto.customerId,
@@ -41,14 +41,14 @@ export class OrdersService {
         createOrderDto.quantity,
       );
 
-      await this.orderRepository.create(order);
+      return await this.orderRepository.create(order);
     } catch (error) {
       console.log(error);
       throw new Error(error.message);
     }
   }
 
-  async findOne(id: string): Promise<GetOrderDto> {
+  async findOne(id: string): Promise<GetOrderDto | null> {
     try {
       const order = await this.orderRepository.find(id);
 

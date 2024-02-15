@@ -8,7 +8,7 @@ import GetCustomerDto from '../../controllers/dto/get-customer.dto';
 export class CustomersService {
   constructor(private customerRepository: CustomerRepository) {}
 
-  async create(createCustomerDto: CreateCustomerDto) {
+  async create(createCustomerDto: CreateCustomerDto): Promise<string> {
     try {
       const customer = CustomerFactory.create({
         id: null,
@@ -19,7 +19,7 @@ export class CustomersService {
         active: true,
       });
 
-      await this.customerRepository.create(customer);
+      return await this.customerRepository.create(customer);
     } catch (error) {
       console.log(error);
       throw error;
