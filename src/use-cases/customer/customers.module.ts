@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { CustomersService } from './customers.service';
-import { CustomersController } from './customers.controller';
+import { CustomersController } from '../../controllers/customers.controller';
 import { DatabaseModule } from 'src/infrastructure/@shared/typeorm/database.module';
 import { customerProviders } from 'src/infrastructure/customer/repository/typeorm/customer.providers';
 import CustomerRepository from 'src/infrastructure/customer/repository/typeorm/customer.repository';

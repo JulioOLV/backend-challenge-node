@@ -1,9 +1,9 @@
 import { Response } from 'express';
 import { Controller, Get, Post, Body, Param, Res } from '@nestjs/common';
-import { CustomersService } from './customers.service';
+import { CustomersService } from '../use-cases/customer/customers.service';
 import { CreateCustomerDto } from './dto/create-customer.dto';
 
-@Controller('customers')
+@Controller('api/v1/customers')
 export class CustomersController {
   constructor(private readonly customersService: CustomersService) {}
 

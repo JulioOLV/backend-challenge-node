@@ -1,9 +1,9 @@
 import { Response } from 'express';
 import { Controller, Get, Post, Body, Param, Res } from '@nestjs/common';
-import { ProductsService } from './products.service';
+import { ProductsService } from '../use-cases/product/products.service';
 import { CreateProductDto } from './dto/create-product.dto';
 
-@Controller('products')
+@Controller('api/v1/products')
 export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 

@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { CreateCustomerDto } from './dto/create-customer.dto';
+import { CreateCustomerDto } from '../../controllers/dto/create-customer.dto';
 import CustomerRepository from 'src/infrastructure/customer/repository/typeorm/customer.repository';
 import CustomerFactory from 'src/@domain/customer/factory/customer.factory';
-import GetCustomerDto from './dto/get-customer.dto';
+import GetCustomerDto from '../../controllers/dto/get-customer.dto';
 
 @Injectable()
 export class CustomersService {
