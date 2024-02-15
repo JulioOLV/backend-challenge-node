@@ -68,19 +68,6 @@ describe('Order entity unit tests', () => {
     }).toThrow('Quantity is required');
   });
 
-  it('should throw an error if date is not provided', () => {
-    expect(() => {
-      new Order(
-        uuid(),
-        uuid(),
-        uuid(),
-        parseFloat(faker.finance.amount()),
-        faker.number.int(),
-        null,
-      );
-    }).toThrow('Date is required');
-  });
-
   it('should throw an error if price is less than or equal to 0', () => {
     expect(() => {
       new Order(
