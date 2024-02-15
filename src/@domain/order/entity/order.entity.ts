@@ -5,7 +5,7 @@ export default class Order {
   private _unitPrice: number;
   private _quantity: number;
   private _total: number;
-  private readonly _date: Date;
+  private readonly _date?: Date | null;
 
   constructor(
     id: string,
@@ -13,14 +13,14 @@ export default class Order {
     productId: string,
     unitPrice: number,
     quantity: number,
-    date: Date,
+    date?: Date,
   ) {
     this._id = id;
     this._customerId = customerId;
     this._productId = productId;
     this._unitPrice = unitPrice;
     this._quantity = quantity;
-    this._date = date;
+    this._date = date || new Date();
 
     this.calculateTotal();
     this.validate();
@@ -48,6 +48,10 @@ export default class Order {
 
   public get quantity(): number {
     return this._quantity;
+  }
+
+  public get date(): Date {
+    return this._date;
   }
 
   public addQuantity(quantity: number): void {
@@ -91,10 +95,6 @@ export default class Order {
 
     if (this._quantity <= 0) {
       throw new Error('Quantity must be greater than 0');
-    }
-
-    if (!this._date) {
-      throw new Error('Date is required');
     }
   }
 

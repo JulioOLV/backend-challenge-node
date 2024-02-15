@@ -14,10 +14,16 @@ export default class OrderModel {
   product_id: string;
 
   @Column()
+  unit_price: number;
+
+  @Column()
   quantity: number;
 
   @Column()
   total: number;
+
+  @Column()
+  date: Date;
 
   @Column()
   created_at: Date;

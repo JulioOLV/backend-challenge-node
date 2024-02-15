@@ -16,15 +16,15 @@ export default class OrderRepository implements OrderRepositoryInterface {
     });
 
     if (!orderInDb) {
-      throw new Error('Order not found');
+      return null;
     }
 
     return new Order(
       orderInDb.id,
       orderInDb.customer_id,
       orderInDb.product_id,
+      orderInDb.unit_price,
       orderInDb.quantity,
-      orderInDb.total,
       orderInDb.created_at,
     );
   }
@@ -35,7 +35,9 @@ export default class OrderRepository implements OrderRepositoryInterface {
       customer_id: entity.customerId,
       product_id: entity.productId,
       quantity: entity.quantity,
+      unit_price: entity.unitPrice,
       total: entity.total,
+      date: entity.date,
     });
   }
 }
