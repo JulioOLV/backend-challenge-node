@@ -1,0 +1,38 @@
+import { Injectable } from '@nestjs/common';
+import { v4 as uuid } from 'uuid';
+import { CreateProductDto } from './dto/create-product.dto';
+import ProductRepository from 'src/infrastructure/product/repository/typeorm/product.repository';
+import Product from 'src/@domain/product/entity/product.entity';
+import GetProductDto from './dto/get-product.dto';
+
+@Injectable()
+export class ProductsService {
+  constructor(private productRepository: ProductRepository) {}
+
+  async create(createProductDto: CreateProductDto): Promise<void> {
+    try {
+      const product = new Product(uuid(), createProductDto.name);
+      product.activeProduct(true);
+
+      await this.productRepository.create(product);
+    } catch (error) {
+      console.log(error);
+      throw new Error(error.message);
+    }
+  }
+
+  async findOne(id: string): Promise<GetProductDto> {
+    try {
+      const product = await this.productRepository.find(id);
+
+      if (!product) {
+        return null;
+      }
+
+      return new GetProductDto(product.id, product.name, product.active);
+    } catch (error) {
+      console.log(error);
+      throw new Error(error.message);
+    }
+  }
+}

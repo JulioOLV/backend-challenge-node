@@ -16,10 +16,13 @@ export default class ProductRepository implements ProductRepositoryInterface {
     });
 
     if (!productInDb) {
-      throw new Error('Product not found');
+      return null;
     }
 
-    return new Product(productInDb.id, productInDb.name);
+    const product = new Product(productInDb.id, productInDb.name);
+    product.activeProduct(productInDb.active);
+
+    return product;
   }
 
   async create(entity: Product): Promise<void> {
