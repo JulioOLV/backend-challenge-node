@@ -22,7 +22,7 @@ describe('Customer factory unit tests', () => {
     expect(customer.name.firstName).toBe(customerProps.firstName);
     expect(customer.name.lastName).toBe(customerProps.lastName);
     expect(customer.cpf.value).toBe(customerProps.cpf);
-    expect(customer.birthDate).toBe(customerProps.birthDate);
+    expect(customer.birthDate).toStrictEqual(customerProps.birthDate);
     expect(customer.active).toBe(customerProps.active);
   });
 
