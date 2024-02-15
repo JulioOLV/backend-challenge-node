@@ -20,6 +20,22 @@ export default class Customer {
     this.validate();
   }
 
+  public get id(): string {
+    return this._id;
+  }
+
+  public get name(): Name {
+    return this._name;
+  }
+
+  public get cpf(): Cpf {
+    return this._cpf;
+  }
+
+  public get birthDate(): Date {
+    return this._birthDate;
+  }
+
   public get address(): Address {
     return this._address;
   }
@@ -32,8 +48,8 @@ export default class Customer {
     this._address = address;
   }
 
-  public activeCustomer(): void {
-    this._active = true;
+  public activeCustomer(active: boolean): void {
+    this._active = active;
   }
 
   private validate(): void {
