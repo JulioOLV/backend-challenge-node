@@ -2,11 +2,13 @@ import { Response } from 'express';
 import { Controller, Get, Post, Body, Param, Res } from '@nestjs/common';
 import { ProductsService } from '../use-cases/product/products.service';
 import { CreateProductDto } from './dto/create-product.dto';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('api/v1/products')
 export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
+  @ApiTags('Products')
   @Post()
   async create(
     @Body() createProductDto: CreateProductDto,
@@ -21,6 +23,7 @@ export class ProductsController {
     }
   }
 
+  @ApiTags('Products')
   @Get(':id')
   async findOne(@Param('id') id: string, @Res() res: Response) {
     try {

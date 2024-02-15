@@ -13,7 +13,7 @@ export const databaseProviders = [
         port: 3306,
         username: 'root',
         password: 'root',
-        database: 'backend_challange_node',
+        database: 'backend_challenge_node',
         entities: [CustomerModel, ProductModel, OrderModel],
         synchronize: false,
         logging: false,

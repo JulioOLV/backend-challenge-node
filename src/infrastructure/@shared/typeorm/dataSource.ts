@@ -7,7 +7,7 @@ export const connectionSource = new DataSource({
   port: 3306,
   username: 'root',
   password: 'root',
-  database: 'backend_challange_node',
+  database: 'backend_challenge_node',
   logging: false,
   synchronize: false,
   name: 'default',
