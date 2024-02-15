@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryColumn } from 'typeorm';
 
-@Entity()
+@Entity('tb_product')
 export default class ProductModel {
   @PrimaryColumn()
   id: string;

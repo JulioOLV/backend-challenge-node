@@ -1,8 +1,7 @@
 import { DataSource } from 'typeorm';
-import { CreateTables214820240214 } from './migrations/CreateTables214820240214';
 import CustomerModel from 'src/infrastructure/customer/repository/typeorm/customer.model';
-import AddressModel from 'src/infrastructure/customer/repository/typeorm/address.model';
 import ProductModel from 'src/infrastructure/product/repository/typeorm/product.model';
+import OrderModel from 'src/infrastructure/order/repository/typeorm/order.model';
 
 export const databaseProviders = [
   {
@@ -15,10 +14,9 @@ export const databaseProviders = [
         username: 'root',
         password: 'root',
         database: 'backend_challange_node',
-        entities: [CustomerModel, AddressModel, ProductModel],
+        entities: [CustomerModel, ProductModel, OrderModel],
         synchronize: false,
         logging: false,
-        migrations: [CreateTables214820240214],
       });
 
       return dataSource.initialize();

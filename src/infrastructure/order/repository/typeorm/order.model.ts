@@ -2,7 +2,7 @@ import CustomerModel from 'src/infrastructure/customer/repository/typeorm/custom
 import ProductModel from 'src/infrastructure/product/repository/typeorm/product.model';
 import { Column, Entity, OneToOne, PrimaryColumn } from 'typeorm';
 
-@Entity()
+@Entity('tb_order')
 export default class OrderModel {
   @PrimaryColumn()
   id: string;

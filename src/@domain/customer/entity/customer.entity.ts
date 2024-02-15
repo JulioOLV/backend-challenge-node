@@ -1,5 +1,4 @@
 import { v4 as uuid } from 'uuid';
-import Address from '../value-object/address.value-object';
 import Name from '../value-object/name.value-object';
 import Cpf from '../value-object/cpf.value-object';
 
@@ -8,7 +7,6 @@ export default class Customer {
   private readonly _name: Name;
   private readonly _cpf: Cpf;
   private readonly _birthDate: Date;
-  private _address: Address;
   private _active: boolean;
 
   constructor(id: string, name: Name, cpf: Cpf, birthDate: Date) {
@@ -36,16 +34,8 @@ export default class Customer {
     return this._birthDate;
   }
 
-  public get address(): Address {
-    return this._address;
-  }
-
   public get active(): boolean {
     return this._active;
-  }
-
-  public changeHomeAddress(address: Address): void {
-    this._address = address;
   }
 
   public activeCustomer(active: boolean): void {

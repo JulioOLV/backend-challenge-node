@@ -1,13 +1,9 @@
-import { BaseEntity, Column, Entity, OneToOne, PrimaryColumn } from 'typeorm';
-import AddressModel from './address.model';
+import { BaseEntity, Column, Entity, PrimaryColumn } from 'typeorm';
 
-@Entity()
+@Entity('tb_customer')
 export default class CustomerModel extends BaseEntity {
   @PrimaryColumn()
   id: string;
-
-  @Column()
-  address_id: string;
 
   @Column()
   first_name: string;
@@ -29,7 +25,4 @@ export default class CustomerModel extends BaseEntity {
 
   @Column()
   updated_at: Date;
-
-  @OneToOne(() => AddressModel)
-  address: AddressModel;
 }

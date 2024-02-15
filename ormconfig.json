@@ -1,0 +1,14 @@
+{
+  "type": "mysql",
+  "host": "localhost",
+  "port": 3306,
+  "username": "root",
+  "password": "root",
+  "database": "test",
+  "entities": ["src/infraestructure/**/*.model.ts"],
+  "migrations": ["src/infraestructure/@shared/typeorm/migrations/*.ts"],
+  "cli": {
+    "migrationsDir": ["src/infraestructure/@shared/typeorm/migrations/"],
+    "entitiesDir": "src/infraestructure/**/*.model.ts"
+  }
+}

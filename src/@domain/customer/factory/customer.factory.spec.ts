@@ -11,13 +11,6 @@ describe('Customer factory unit tests', () => {
       lastName: faker.person.lastName(),
       cpf: '12345678900',
       birthDate: faker.date.birthdate({ min: 18, mode: 'age' }),
-      street: faker.location.street(),
-      number: faker.number.int().toString(),
-      complement: faker.lorem.text(),
-      city: faker.location.city(),
-      state: faker.location.state(),
-      country: faker.location.country(),
-      zipCode: '12345678',
       active: true,
     };
 
@@ -30,13 +23,6 @@ describe('Customer factory unit tests', () => {
     expect(customer.name.lastName).toBe(customerProps.lastName);
     expect(customer.cpf.value).toBe(customerProps.cpf);
     expect(customer.birthDate).toBe(customerProps.birthDate);
-    expect(customer.address.street).toBe(customerProps.street);
-    expect(customer.address.number).toBe(customerProps.number);
-    expect(customer.address.complement).toBe(customerProps.complement);
-    expect(customer.address.city).toBe(customerProps.city);
-    expect(customer.address.state).toBe(customerProps.state);
-    expect(customer.address.country).toBe(customerProps.country);
-    expect(customer.address.zipCode).toBe(customerProps.zipCode);
     expect(customer.active).toBe(customerProps.active);
   });
 

@@ -12,41 +12,42 @@ export default class CustomerRepository implements CustomerRepositoryInterface {
   ) {}
 
   async find(id: string): Promise<Customer> {
-    const customerInDb = await this.customer.findOne({
-      where: { id },
-      relations: ['address'],
-    });
+    try {
+      const customerInDb = await this.customer.findOne({
+        where: { id },
+      });
 
-    if (!customerInDb) {
-      throw new Error('Customer not found');
+      if (!customerInDb) {
+        return null;
+      }
+
+      return CustomerFactory.create({
+        id: customerInDb.id,
+        firstName: customerInDb.first_name,
+        lastName: customerInDb.last_name,
+        cpf: customerInDb.document,
+        birthDate: customerInDb.birthdate,
+        active: customerInDb.active,
+      });
+    } catch (error) {
+      console.log(error);
+      throw new Error('Error to find customer');
     }
-
-    return CustomerFactory.create({
-      id: customerInDb.id,
-      firstName: customerInDb.first_name,
-      lastName: customerInDb.last_name,
-      cpf: customerInDb.document,
-      birthDate: customerInDb.birthdate,
-      street: customerInDb.address.street,
-      number: customerInDb.address.number,
-      complement: customerInDb.address.complement,
-      city: customerInDb.address.city,
-      state: customerInDb.address.state,
-      country: customerInDb.address.country,
-      zipCode: customerInDb.address.zip_code,
-      active: customerInDb.active,
-    });
   }
 
   async create(entity: Customer): Promise<void> {
-    await this.customer.save({
-      id: entity.id,
-      address_id: entity.address.id,
-      first_name: entity.name.firstName,
-      last_name: entity.name.lastName,
-      document: entity.cpf.value,
-      birthdate: entity.birthDate,
-      active: entity.active,
-    });
+    try {
+      await this.customer.save({
+        id: entity.id,
+        first_name: entity.name.firstName,
+        last_name: entity.name.lastName,
+        document: entity.cpf.value,
+        birthdate: entity.birthDate,
+        active: entity.active,
+      });
+    } catch (error) {
+      console.log(error);
+      throw new Error('Error to create customer');
+    }
   }
 }
