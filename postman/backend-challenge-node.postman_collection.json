@@ -1,0 +1,91 @@
+{
+	"info": {
+		"_postman_id": "a2943e5c-505b-4966-bffe-3ee4d9ce0965",
+		"name": "backend-challenge-node",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "19530458"
+	},
+	"item": [
+		{
+			"name": "Create Customer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"first_name\": \"teste\",\r\n    \"last_name\": \"teste\",\r\n    \"cpf\": \"11111111111\",\r\n    \"birthDate\": \"1997-02-15\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/api/v1/customers"
+			},
+			"response": []
+		},
+		{
+			"name": "Find Customer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3000/api/v1/customers/40c96cbf-830f-42fd-b391-0b3652d4987f"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/api/v1/products"
+			},
+			"response": []
+		},
+		{
+			"name": "Find Product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3000/api/v1/products/faefa599-6690-4176-b3e4-dbfc4cd4d563"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"customerId\": \"40c96cbf-830f-42fd-b391-0b3652d4987f\",\r\n    \"productId\": \"faefa599-6690-4176-b3e4-dbfc4cd4d563\",\r\n    \"quantity\": 4,\r\n    \"unitPrice\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/api/v1/orders"
+			},
+			"response": []
+		},
+		{
+			"name": "Find Order",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3000/api/v1/orders/5f93d92f-82df-45ec-b8f5-52b536727e3f"
+			},
+			"response": []
+		}
+	]
+}
